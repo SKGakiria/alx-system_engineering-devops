@@ -19,3 +19,7 @@ will stop working!
 
 Write a Bash script displaying all active IPv4 IPs on the machine
 it’s executed on.
+
+2. Port listening on localhost
+
+Write a Bash script listening on port 98 on localhost.
