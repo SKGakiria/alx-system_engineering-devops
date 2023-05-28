@@ -1,0 +1,23 @@
+https://imgur.com/a/tlq7Fyj
+
+
+EXPLANATION
+
+1. The user types the domain name www.foobar.com into the web browser
+2. The browser then sends a request to the router
+3. The router passes the message to the DNS server.
+The DNS server implements the A record type and maps the domain name www.foobar.com to the IP address 8.8.8.8
+4. The DNS server then sends a response message to the router.
+5. The router then passes the message to the browser with the requested IP address.
+6.The browser then sends a request for the website to the server.
+7. In the server the web server sends a HTTP request to the application server.
+8. The application server interprets the request and forms a query depending on the requested data by the user and sends this to the database.
+9. The database then sends a response of the requested information
+10. The application server then formulates a HTML version of the request that can be viewed by the browser.
+11. This is sent as a HTTP response to the web server which then serves the web page back to the router.
+
+ISSUES WITH THE CURRENT INFRASTRUCTURE
+
+1. The current system has multiple single points of failure (SPOF)for example having only one server means that when the server fails the whole system fails.
+2. Lack of a load balancer in the current infrastructure also means that control of traffic to the server is very inefficient.
+3. Also during repair due to lack of redundancy, the whole system has to be shut down until the repair is complete.

@@ -1,0 +1,7 @@
+https://imgur.com/a/cp3GG53
+
+EXPLANATIONS
+
+Each of the components now has a dedicated server and this enables efficient scalability of the web architecture and easy monitoring of the resources.
+
+Load balancers configured as a cluster work by distributing traffic across multiple load balancers. This helps to improve performance and reliability by preventing any single load balancer from becoming overloaded.

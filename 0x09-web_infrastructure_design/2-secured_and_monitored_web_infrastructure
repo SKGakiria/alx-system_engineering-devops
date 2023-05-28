@@ -1,0 +1,27 @@
+https://imgur.com/a/mqPp5p6
+
+EXPLANATIONS
+
+Firewalls: Firewalls are basically used to filter incoming and outgoing traffic. One firewall on the load balancer filters traffic to and from the web server and the users repectively. Each active server also has a firewall to filter traffic and ensure no malicious programs make it ot the server or unauthorized access.
+SSL certificate: An SSL certificate, also known as a Secure Sockets Layer certificate, is a digital certificate that authenticates the identity of a website and encrypts the traffic between the website and the user's browser. SSL certificates are used to protect sensitive information such as credit card numbers and passwords.
+Monitoring Tools Added:
+1. DataDog : DataDog allows you to measure and monitor everything with graphs. It gathers performance data from all your application components. The service has a lot of integrations. 
+2. WaveFront : It is able to analyze anything that can produce data points. A query language that looks like SQL allows users to apply mathematical operations to these data points to extract values or detect anomalies from the time series data.
+3. Uptime Robot : this is a simple service that will check that your website is responding from multiple locations in the world. 
+
+Qeuries per second is a metric used to measure the traffic of a website and can therefore to make various business decisions such as scaling up or down of purchasing new hardware.
+
+ISSUES WITH THE CURRENT INFRASTRUCTURE
+
+1. Terminating SSL at the load balancer level can be an issue because it can increase the load on the load balancer and reduce the performance of the application servers.
+
+When SSL is terminated at the load balancer level, the load balancer must decrypt all of the traffic before passing it to the application servers. This can be a significant amount of work, and it can slow down the performance of the load balancer.
+
+2. Having only one MySQL server capable of accepting writes is an issue because it can lead to a single point of failure. If the MySQL server goes down, no new data can be written to the database. This can cause a number of problems, including:
+Data loss
+Performance degradation
+Increased security risks
+
+3. Having servers with all the same components (database, web server and application server) might be a problem because it might lead to scalability issues because all components of the server have to be scaled instead of the only the components that need upscaling eg to upscale the database also the web server and application server has to nr upscaled.
+
+It is also difficult to maintain because a database error may be in any server as compared to a dedicated server where troubleshooting can be done easily.
