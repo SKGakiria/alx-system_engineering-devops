@@ -13,7 +13,6 @@ echo -e "Ceci n'est pas une page\n" > /etc/nginx/html/error1.html
 printf %s "server {
     listen 80;
     listen [::]:80 default_server;
-    add_header X-Served-By $HOSTNAME;
     root   /etc/nginx/html;
     index  index.html;
     location /redirect_me {
@@ -25,4 +24,7 @@ printf %s "server {
              internal;
     }
 }" > /etc/nginx/sites-available/default
+head_v='add_header X-Served-By $HOSTNAME;'
+config_file='/etc/nginx/nginx.conf'
+sudo sed -i "/http {/a $head_v" "$config_file"
 service nginx restart
