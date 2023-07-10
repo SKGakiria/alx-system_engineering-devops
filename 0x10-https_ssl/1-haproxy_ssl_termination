@@ -33,19 +33,20 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend sgakiria.tech-http-frontend
-	bind	 *:80
-	http-request set-header X-Forwarded-Proto http
-	default_backend	 sgakiria.tech-backend
+frontend sgakiria-frontend-http
+        bind *:80
+        mode http
+        http-request set-header X-Forwarded-Proto http
+        default_backend  sgakiria-backend
 
 
-frontend  sgakiria.tech-https-frontend
-	bind *:443 ssl crt /etc/ssl/sgakiria.tech.pem
-	http-request set-header X-Forwarded-Proto https
-        default_backend sgakiria.tech-backend
+frontend  sgakiria-frontend-https
+        bind *:443 ssl crt /etc/haproxy/certs/www.sgakiria.tech.pem
+        http-request set-header X-Forwarded-Proto https
+        default_backend sgakiria-backend
 
 
-backend sgakiria.tech-backend
+backend sgakiria-backend
         balance roundrobin
         server 195223-web-01 100.26.241.177:80 check
         server 195223-web-02 54.158.210.1:80 check
