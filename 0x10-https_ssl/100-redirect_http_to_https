@@ -42,6 +42,7 @@ frontend sgakiria-frontend-http
 frontend  sgakiria-frontend-https
         bind *:443 ssl crt /etc/haproxy/certs/www.sgakiria.tech.pem
         http-request set-header X-Forwarded-Proto https
+        http-request redirect scheme https code 301 unless { ssl_fc }
         default_backend sgakiria-backend
 
 backend sgakiria-backend
