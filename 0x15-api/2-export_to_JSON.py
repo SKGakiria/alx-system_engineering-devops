@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Employee TODO list progress information"""
-import requests
 import json
+import requests
 import sys
 
 
