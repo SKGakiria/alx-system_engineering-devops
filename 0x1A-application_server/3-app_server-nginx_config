@@ -1,0 +1,30 @@
+# Configure Nginx to serve route /number_odd_or_even/(any integer)
+
+server {
+    listen 80;
+    listen [::]:80 default_server;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+    error_page 404 /error1.html;
+    location /error1 {
+             root /etc/nginx/html;
+             internal;
+    }
+    location /hbnb_static {
+             alias /data/web_static/current/;
+             autoindex off;
+    }
+    location / {
+             proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    location /airbnb-onepage/ {
+             proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
+    }
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+             proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
+    }
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    add_header X-Served-By $hostname;
+}
